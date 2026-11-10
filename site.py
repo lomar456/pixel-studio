@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template_string
 
 app = Flask(__name__)
@@ -19,7 +20,6 @@ HTML_CODE = """
             text-align: center;
             overflow-x: hidden;
         }
-        /* Эффект мерцания для заголовка */
         @keyframes flicker {
             0% { opacity: 1; }
             50% { opacity: 0.8; text-shadow: 0 0 20px #ff0000; }
@@ -59,8 +59,6 @@ HTML_CODE = """
             border-radius: 15px;
             box-shadow: 0 0 15px rgba(255, 0, 0, 0.1);
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
         .game-card:hover {
             box-shadow: 0 0 40px rgba(255, 0, 0, 0.5);
@@ -120,9 +118,8 @@ HTML_CODE = """
                 Психологический хоррор от первого лица. Исследуйте бесконечные желтые коридоры, 
                 собирайте ключи, прячьтесь от Объекта-1 и постарайтесь выбраться живым...
             </div>
-            <!-- Вставь сюда свою реальную ссылку на файл .exe или архив с игрой -->
+            <!-- Сюда потом вставишь ссылку на скачивание игры -->
             <a href="#" class="btn-download">Скачать (Beta)</a>
-            <p style="color: #666; font-size: 12px; margin-top: 15px;">*Файл скоро появится</p>
         </div>
     </div>
 
@@ -138,9 +135,6 @@ def home():
     return render_template_string(HTML_CODE)
 
 if __name__ == '__main__':
-    print("Сайт запущен! Открой в браузере: http://localhost:5000")
-    # Изменили на localhost вместо цифр
-if __name__ == '__main__':
-    import os
+    # Этот блок нужен, чтобы сайт работал и на домашнем ПК, и на Render
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
