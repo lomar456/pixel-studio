@@ -52,7 +52,7 @@ HTML_CODE = """
             flex-direction: column;
             gap: 30px;
         }
-        .game-card {
+        .game-card, .links-card {
             background-color: #1a1a1a;
             border: 1px solid #333;
             padding: 30px;
@@ -60,12 +60,12 @@ HTML_CODE = """
             box-shadow: 0 0 15px rgba(255, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
-        .game-card:hover {
+        .game-card:hover, .links-card:hover {
             box-shadow: 0 0 40px rgba(255, 0, 0, 0.5);
             transform: translateY(-5px);
             border-color: #ff0000;
         }
-        .game-title {
+        .game-title, .links-title {
             color: #ffcccc;
             font-size: 32px;
             margin-bottom: 15px;
@@ -97,6 +97,30 @@ HTML_CODE = """
             box-shadow: 0 0 30px #ff0000;
             transform: scale(1.05);
         }
+        .links-list {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .link-item {
+            display: inline-block;
+            background-color: #2a2a2a;
+            color: #ffcccc;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 8px;
+            border: 1px solid #444;
+            transition: 0.3s;
+            font-size: 16px;
+        }
+        .link-item:hover {
+            background-color: #ff0000;
+            color: white;
+            border-color: #ff0000;
+            box-shadow: 0 0 15px #ff0000;
+        }
         footer {
             margin-top: 80px;
             color: #555;
@@ -112,14 +136,25 @@ HTML_CODE = """
     </header>
 
     <div class="container">
+        <!-- Карточка игры -->
         <div class="game-card">
             <div class="game-title">BACKROOMS LABYRINTH</div>
             <div class="game-desc">
                 Психологический хоррор от первого лица. Исследуйте бесконечные желтые коридоры, 
                 собирайте ключи, прячьтесь от Объекта-1 и постарайтесь выбраться живым...
             </div>
-            <!-- Сюда потом вставишь ссылку на скачивание игры -->
-            <a href="<a href="https://github.com/lomar456/pixel-studio/releases/download/v1.0/Backrooms.Labyrinth.beta.1.5.rar" class="btn-download">Скачать (Beta)</a>" class="btn-download">Скачать (Beta)</a>
+            <!-- Твоя ссылка на скачивание -->
+            <a href="https://github.com/lomar456/pixel-studio/releases/download/v1.0/Backrooms.Labyrinth.beta.1.5.rar" class="btn-download">Скачать (Beta)</a>
+        </div>
+
+        <!-- Карточка ссылок -->
+        <div class="links-card">
+            <div class="links-title">Наши соцсети</div>
+            <div class="links-list">
+                <a href="https://www.youtube.com/@pixel.studioo.fficial" target="_blank" class="link-item">YouTube</a>
+                <a href="https://t.me/PixelStudioGames" target="_blank" class="link-item">Telegram</a>
+                <a href="https://pixel-studio-1.onrender.com/" target="_blank" class="link-item">Сайт</a>
+            </div>
         </div>
     </div>
 
@@ -135,6 +170,5 @@ def home():
     return render_template_string(HTML_CODE)
 
 if __name__ == '__main__':
-    # Этот блок нужен, чтобы сайт работал и на домашнем ПК, и на Render
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
