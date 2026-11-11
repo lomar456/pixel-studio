@@ -119,7 +119,7 @@ HTML_CODE = """
                 собирайте ключи, прячьтесь от Объекта-1 и постарайтесь выбраться живым...
             </div>
             <!-- Сюда потом вставишь ссылку на скачивание игры -->
-            <a href="#" class="btn-download">Скачать (Beta)</a>
+            <a href="<a href="https://github.com/lomar456/pixel-studio/releases/download/v1.0/Backrooms.Labyrinth.beta.1.5.rar" class="btn-download">Скачать (Beta)</a>" class="btn-download">Скачать (Beta)</a>
         </div>
     </div>
 
