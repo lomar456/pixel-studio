@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backrooms Labyrinth - Pixel Studio</title>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #ccc;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            background-image: radial-gradient(circle, #1a1a1a 0%, #000 100%);
+        }
+        .container {
+            background: rgba(20, 20, 20, 0.9);
+            padding: 40px 30px;
+            border: 1px solid #333;
+            box-shadow: 0 0 30px rgba(200, 0, 0, 0.1);
+            border-radius: 10px;
+            max-width: 800px;
+            width: 90%;
+        }
+        h1 {
+            color: #d22;
+            font-size: 36px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(200, 0, 0, 0.5);
+        }
+        .subtitle {
+            color: #777;
+            margin-bottom: 30px;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        .desc {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            color: #999;
+        }
+        
+        /* Стили для скриншотов */
+        .screenshots {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        .screenshots img {
+            width: 240px;
+            height: 135px;
+            object-fit: cover;
+            border: 2px solid #333;
+            border-radius: 6px;
+            transition: transform 0.2s, border-color 0.2s;
+            cursor: pointer;
+        }
+        .screenshots img:hover {
+            transform: scale(1.05);
+            border-color: #d22;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            font-family: 'Courier New', Courier, monospace;
+            transition: all 0.2s;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .btn-main {
+            background-color: #d22;
+            color: white;
+            border: 2px solid #f44;
+            text-transform: uppercase;
+            box-shadow: 0 0 20px rgba(200, 0, 0, 0.3);
+        }
+        .btn-main:hover {
+            background-color: #f44;
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(200, 0, 0, 0.6);
+        }
+        .btn-donate {
+            background-color: #222;
+            color: #ffd700;
+            border: 1px solid #444;
+        }
+        .btn-donate:hover {
+            background-color: #333;
+            border-color: #ffd700;
+            transform: translateY(-2px);
+        }
+        .warning {
+            font-size: 12px;
+            color: #666;
+            margin-top: 25px;
+            border-top: 1px dashed #333;
+            padding-top: 15px;
+        }
+        footer {
+            margin-top: 40px;
+            font-size: 12px;
+            color: #444;
+        }
+        footer a {
+            color: #888;
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: #d22;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Backrooms Labyrinth</h1>
+        <div class="subtitle">v1.6 Beta</div>
+        
+        <p class="desc">
+            Погрузитесь в атмосферу бесконечных желтых коридоров.<br> 
+            Найдите выход, пока Оно не нашло вас.
+        </p>
+
+        <!-- БЛОК СО СКРИНШОТАМИ (Они должны лежать в папке static) -->
+        <div class="screenshots">
+            <img src="{{ url_for('static', filename='screenshot_1.png') }}" alt="Меню">
+            <img src="{{ url_for('static', filename='screenshot_2.png') }}" alt="Коридор">
+            <img src="{{ url_for('static', filename='screenshot_3.png') }}" alt="Клиника">
+        </div>
+
+        <div class="btn-group">
+            <!-- Кнопка скачивания -->
+            <a href="{{ download_url }}" class="btn btn-main">Скачать игру (ZIP)</a>
+            
+            <!-- Кнопка доната -->
+            <a href="{{ donate_url }}" target="_blank" class="btn btn-donate">☕ Поддержать проект</a>
+        </div>
+
+        <div class="warning">
+            ⚠️ Внимание: Это бета-версия. Антивирус может ругаться на .exe (ложное срабатывание).<br>
+            Перед запуском обязательно распакуйте архив!
+        </div>
+    </div>
+
+    <footer>
+        Создано студией PIXEL STUDIO | <a href="{{ tg_url }}" target="_blank">Telegram</a>
+    </footer>
+
+</body>
+</html>
