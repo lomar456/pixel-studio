@@ -2,6 +2,9 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <!-- Иконка сайта (монстр) -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Backrooms Labyrinth - Pixel Studio</title>
     <style>
@@ -14,7 +17,7 @@
             color: #ccc;
             font-family: 'Courier New', Courier, monospace;
             margin: 0;
-            /* Делаем сетку: первый блок на весь экран, второй (подвал) прибит к низу */
+            /* Сетка для прижатия подвала к низу */
             display: grid;
             grid-template-rows: 1fr auto;
             min-height: 100vh;
@@ -23,7 +26,6 @@
             background-attachment: fixed;
         }
 
-        /* Обертка для контента, чтобы он был ровно по центру */
         .main-wrapper {
             display: flex;
             justify-content: center;
@@ -131,7 +133,6 @@
             padding-top: 15px;
         }
 
-        /* Идеальный подвал */
         footer {
             text-align: center;
             padding: 20px;
@@ -151,7 +152,6 @@
 </head>
 <body>
 
-    <!-- Обертка для центрирования контента -->
     <div class="main-wrapper">
         <div class="container">
             <h1>Backrooms Labyrinth</h1>
@@ -180,7 +180,6 @@
         </div>
     </div>
 
-    <!-- Подвал всегда внизу -->
     <footer>
         Создано студией PIXEL STUDIO | <a href="{{ tg_url }}" target="_blank">Telegram</a>
     </footer>
