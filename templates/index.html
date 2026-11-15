@@ -5,27 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Backrooms Labyrinth - Pixel Studio</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+        
         body {
             background-color: #0a0a0a;
             color: #ccc;
             font-family: 'Courier New', Courier, monospace;
             margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            /* Делаем сетку: первый блок на весь экран, второй (подвал) прибит к низу */
+            display: grid;
+            grid-template-rows: 1fr auto;
             min-height: 100vh;
             text-align: center;
             background-image: radial-gradient(circle, #1a1a1a 0%, #000 100%);
+            background-attachment: fixed;
         }
+
+        /* Обертка для контента, чтобы он был ровно по центру */
+        .main-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
         .container {
             background: rgba(20, 20, 20, 0.9);
             padding: 40px 30px;
             border: 1px solid #333;
             box-shadow: 0 0 30px rgba(200, 0, 0, 0.1);
             border-radius: 10px;
+            width: 100%;
             max-width: 800px;
-            width: 90%;
         }
+
         h1 {
             color: #d22;
             font-size: 36px;
@@ -47,7 +62,6 @@
             color: #999;
         }
         
-        /* Стили для скриншотов */
         .screenshots {
             display: flex;
             flex-wrap: wrap;
@@ -86,7 +100,6 @@
             width: 80%;
             max-width: 400px;
             border-radius: 4px;
-            box-sizing: border-box;
         }
         .btn-main {
             background-color: #d22;
@@ -117,10 +130,15 @@
             border-top: 1px dashed #333;
             padding-top: 15px;
         }
+
+        /* Идеальный подвал */
         footer {
-            margin-top: 40px;
-            font-size: 12px;
-            color: #444;
+            text-align: center;
+            padding: 20px;
+            font-size: 13px;
+            color: #666;
+            border-top: 1px solid #222;
+            width: 100%;
         }
         footer a {
             color: #888;
@@ -133,36 +151,36 @@
 </head>
 <body>
 
-    <div class="container">
-        <h1>Backrooms Labyrinth</h1>
-        <div class="subtitle">v1.6 Beta</div>
-        
-        <p class="desc">
-            Погрузитесь в атмосферу бесконечных желтых коридоров.<br> 
-            Найдите выход, пока Оно не нашло вас.
-        </p>
-
-        <!-- БЛОК СО СКРИНШОТАМИ (Они должны лежать в папке static) -->
-        <div class="screenshots">
-            <img src="{{ url_for('static', filename='screenshot_1.png') }}" alt="Меню">
-            <img src="{{ url_for('static', filename='screenshot_2.png') }}" alt="Коридор">
-            <img src="{{ url_for('static', filename='screenshot_3.png') }}" alt="Клиника">
-        </div>
-
-        <div class="btn-group">
-            <!-- Кнопка скачивания -->
-            <a href="{{ download_url }}" class="btn btn-main">Скачать игру (ZIP)</a>
+    <!-- Обертка для центрирования контента -->
+    <div class="main-wrapper">
+        <div class="container">
+            <h1>Backrooms Labyrinth</h1>
+            <div class="subtitle">v1.6 Beta</div>
             
-            <!-- Кнопка доната -->
-            <a href="{{ donate_url }}" target="_blank" class="btn btn-donate">☕ Поддержать проект</a>
-        </div>
+            <p class="desc">
+                Погрузитесь в атмосферу бесконечных желтых коридоров.<br> 
+                Найдите выход, пока Оно не нашло вас.
+            </p>
 
-        <div class="warning">
-            ⚠️ Внимание: Это бета-версия. Антивирус может ругаться на .exe (ложное срабатывание).<br>
-            Перед запуском обязательно распакуйте архив!
+            <div class="screenshots">
+                <img src="{{ url_for('static', filename='screenshot_1.png') }}" alt="Меню">
+                <img src="{{ url_for('static', filename='screenshot_2.png') }}" alt="Коридор">
+                <img src="{{ url_for('static', filename='screenshot_3.png') }}" alt="Клиника">
+            </div>
+
+            <div class="btn-group">
+                <a href="{{ download_url }}" class="btn btn-main">Скачать игру (ZIP)</a>
+                <a href="{{ donate_url }}" target="_blank" class="btn btn-donate">☕ Поддержать проект</a>
+            </div>
+
+            <div class="warning">
+                ⚠️ Внимание: Это бета-версия. Антивирус может ругаться на .exe (ложное срабатывание).<br>
+                Перед запуском обязательно распакуйте архив!
+            </div>
         </div>
     </div>
 
+    <!-- Подвал всегда внизу -->
     <footer>
         Создано студией PIXEL STUDIO | <a href="{{ tg_url }}" target="_blank">Telegram</a>
     </footer>
